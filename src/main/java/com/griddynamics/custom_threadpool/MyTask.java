@@ -4,8 +4,8 @@ public class MyTask implements Runnable {
 
     private int taskNum;
 
-
     public MyTask(int taskNum) {
+        this.taskNum = taskNum;
     }
 
     @Override
