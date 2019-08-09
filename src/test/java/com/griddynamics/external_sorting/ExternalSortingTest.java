@@ -15,7 +15,6 @@ import java.util.List;
 
 import static com.google.common.io.Files.copy;
 import static java.io.File.createTempFile;
-import static java.lang.System.out;
 import static java.nio.file.Files.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -276,10 +275,10 @@ public class ExternalSortingTest {
     public void shouldNotLoseDataIsParallelSorting() throws IOException {
         externalSort.setParallel(true);
         File tempResultsFile = Files.createTempFile("tempResult", ".tmp").toFile();
-        out.println(tempResultsFile.getAbsolutePath());
+        System.out.println(tempResultsFile.getAbsolutePath());
 
         List<File> dividedLists = externalSort.sortAndDivide(file4);
-        out.println("List size is: " + dividedLists.size());
+        System.out.println("List size is: " + dividedLists.size());
         externalSort.mergeSortedFiles(dividedLists, tempResultsFile);
 
         List<String> expectedResult = readAllLines(file4.toPath());
